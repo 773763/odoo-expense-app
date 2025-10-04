@@ -11,7 +11,7 @@ const protect = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
 
       // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, 'mySuperSecretKeyForOdooHackathon12345');
 
       // Get user from the token (payload)
       req.user = await User.findById(decoded.user.id).select('-password');
